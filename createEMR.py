@@ -1,38 +1,36 @@
 import boto3
 import shlex
+from dataclasses import dataclass
 
 
-class EMR(object):
-
-    @staticmethod
-    def __init__(self):
-        self.name = "test-emr"
-        self.emr_version = "emr-5.21.0"
-        self.emr_log_url = "s3://ecomdatascience-logs-np/emr/"
-        self.aws_ec2_key = None
-        self.aws_access_key = None
-        self.aws_secret_key = None
-        self.client = boto3.client(
-            'emr',
-            region_name='us-east-1',
-            aws_access_key_id=self.aws_access_key,
-            aws_secret_access_key=self.aws_secret_key
-        )
-        self.job_flow_id = None
-        self.subnet_id = "subnet-f0d61bb9"
-        self.spark_submit = """
+@dataclass()
+class EMRParams(object):
+    name: str = "test-emr"
+    emr_version: str = "emr-5.21.0"
+    emr_log_url: str = "s3://ecomdatascience-logs-np/emr/"
+    aws_ec2_key: str = None
+    aws_secret_key: str = None
+    region_name: str = "us-east-1"
+    subnet_id: str = "subnet-f0d61bb9"
+    spark_submit: str = """
             spark-submit
             --class NeuralEmbedding
             s3://ecomdatascience-np/lu/neuralEmbedding.jar
-        """
+    """
 
 
-connection = EMR().client
+connection = boto3.client(
+    "emr",
+    region_name=EMRParams.region_name,
+    aws_access_key_id=EMRParams.aws_ec2_key,
+    aws_secret_access_key=EMRParams.aws_secret_key
+)
+
 
 cluster_id = connection.run_job_flow(
-    Name=EMR().name,
-    LogUri=EMR().emr_log_url,
-    ReleaseLabel=EMR().emr_version,
+    Name=EMRParams.name,
+    LogUri=EMRParams.emr_log_url,
+    ReleaseLabel=EMRParams.emr_version,
     Applications=[
         {
             'Name': 'Spark'
@@ -65,7 +63,7 @@ cluster_id = connection.run_job_flow(
             'ActionOnFailure': 'TERMINATE_CLUSTER',
             'HadoopJarStep': {
                 'Jar': 'command-runner.jar',
-                'Args': shlex.split(cmd)
+                'Args': shlex.split(EMRParams.spark_submit)
             }
         }
     ],
