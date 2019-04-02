@@ -13,9 +13,9 @@ class S3Params(object):
 
 s3 = boto3.client('s3', config=Config(signature_version='s3v4'))
 s3.upload_file(
-    S3Params.file_name,
-    S3Params.bucket_name,
-    S3Params.key,
+    Filename=S3Params.file_name,
+    Bucket=S3Params.bucket_name,
+    Key=S3Params.key,
     ExtraArgs={
         "ServerSideEncryption": "aws:kms",
         "SSEKMSKeyId": S3Params.kms_key

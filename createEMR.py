@@ -10,6 +10,7 @@ class EMRParams(object):
     emr_log_url: str = "s3://ecomdatascience-logs-np/emr/"
     aws_ec2_key: str = None
     aws_secret_key: str = None
+    kms_key: str = "arn:aws:kms:us-east-1:729964090428:key/3a67dc71-c759-48c9-803a-22ac51fee24d"
     region_name: str = "us-east-1"
     subnet_id: str = "subnet-f0d61bb9"
     spark_submit: str = """
@@ -53,7 +54,7 @@ cluster_id = connection.run_job_flow(
                 'InstanceCount': 2,
             }
         ],
-        'KeepJobFlowAliveWhenNoSteps': True,
+        'KeepJobFlowAliveWhenNoSteps': False,
         'TerminationProtected': False,
         'Ec2SubnetId': 'subnet-f0d61bb9',
     },
@@ -84,7 +85,7 @@ cluster_id = connection.run_job_flow(
         {
             "Classification": "emrfs-site",
             "Properties": {
-                "fs.s3.serverSideEncryption.kms.keyId": "arn:aws:kms:us-east-1:729964090428:key/3a67dc71-c759-48c9-803a-22ac51fee24d",
+                "fs.s3.serverSideEncryption.kms.keyId": EMRParams.kms_key,
                 "fs.s3.enableServerSideEncryption": "true"
             }
         },
