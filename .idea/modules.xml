@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/boto3EMR.iml" filepath="$PROJECT_DIR$/boto3EMR.iml" />
+      <module fileurl="file://$PROJECT_DIR$/boto3Script.iml" filepath="$PROJECT_DIR$/boto3Script.iml" />
     </modules>
   </component>
 </project>

@@ -5,7 +5,7 @@ from dataclasses import dataclass
 
 @dataclass()
 class S3Params(object):
-    file_name: str = "/Users/lu-wang/Documents/GitHub/boto3EMR/createEMR2.py"
+    file_name: str = "/Users/lu-wang/Documents/GitHub/boto3Script/createEMR2.py"
     bucket_name: str = "ecomdatascience-np"
     key: str = "lu/testUpload.py"
 
