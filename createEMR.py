@@ -5,7 +5,7 @@ from dataclasses import dataclass
 
 @dataclass()
 class EMRParams(object):
-    name: str = "test-emr"
+    name: str = "recrnn"
     emr_version: str = "emr-5.21.0"
     emr_log_url: str = "s3://ecomdatascience-logs-np/emr/"
     aws_ec2_key: str = None
@@ -15,8 +15,9 @@ class EMRParams(object):
     subnet_id: str = "subnet-f0d61bb9"
     spark_submit: str = """
             spark-submit
-            --class NeuralEmbedding
-            s3://ecomdatascience-np/lu/neuralEmbedding.jar
+            --class SeqRecommenderExp
+            --conf spark.dynamicAllocation.enabled=false
+            s3://ecomdatascience-np/lu/recrnn0328/recrnn.jar
     """
 
 
@@ -50,8 +51,8 @@ cluster_id = connection.run_job_flow(
                 'Name': "Slave nodes",
                 'Market': 'ON_DEMAND',
                 'InstanceRole': 'CORE',
-                'InstanceType': 'm5.xlarge',
-                'InstanceCount': 2,
+                'InstanceType': 'r4.2xlarge',
+                'InstanceCount': 4,
             }
         ],
         'KeepJobFlowAliveWhenNoSteps': False,

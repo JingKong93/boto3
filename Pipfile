@@ -9,6 +9,7 @@ verify_ssl = true
 boto = "==2.49.0"
 boto3 = "==1.9.127"
 pipfile = "*"
+awscli = "*"
 
 [requires]
 python_version = "3.7"
