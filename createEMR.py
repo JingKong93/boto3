@@ -17,7 +17,7 @@ class EMRParams(object):
             spark-submit
             --class SeqRecommenderExp
             --conf spark.dynamicAllocation.enabled=false
-            s3://ecomdatascience-np/lu/recrnn0328/recrnn.jar
+            s3://ecomdatascience-np/lu/recrnn0404/recrnnTest.jar
     """
 
 
@@ -51,14 +51,22 @@ cluster_id = connection.run_job_flow(
                 'Name': "Slave nodes",
                 'Market': 'ON_DEMAND',
                 'InstanceRole': 'CORE',
-                'InstanceType': 'r4.2xlarge',
-                'InstanceCount': 4,
+                'InstanceType': 'm5.2xlarge',
+                'InstanceCount': 10
             }
         ],
         'KeepJobFlowAliveWhenNoSteps': False,
         'TerminationProtected': False,
         'Ec2SubnetId': 'subnet-f0d61bb9',
     },
+    BootstrapActions=[
+        {
+            'Name': 'Maximize Spark Default Config',
+            'ScriptBootstrapAction': {
+                'Path': 's3://support.elasticmapreduce/spark/maximize-spark-default-config',
+            }
+        },
+    ],
     Steps=[
         {
             'Name': 'spark',

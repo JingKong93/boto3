@@ -5,11 +5,11 @@ Boto3 script to operate AWS cloud services
 
 ### Prerequisites
 
-Python 3 and pipenv pre-installed
+Python 3.7 and pipenv pre-installed
 
 
 ### Installing project dependencies
-
+cd into project folder and run below
 ```
 pipenv install
 ```
