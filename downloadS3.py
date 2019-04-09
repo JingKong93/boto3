@@ -7,9 +7,9 @@ from dataclasses import dataclass
 
 @dataclass()
 class S3Params(object):
-    file_name: str = "/Users/lu-wang/Documents/GitHub/recrnn/historySample.csv.gz"
+    file_name: str = "/Users/lu-wang/Documents/GitHub/NeuralEmbedding/sample.csv.gz"
     bucket_name: str = "ecomdatascience-np"
-    key: str = "lu/recrnn0328/history/data_0_0_0.csv.gz"
+    key: str = "lu/embedding0408/data_0_0_0.csv.gz"
 
 
 class DownloadProgressPercentage(object):

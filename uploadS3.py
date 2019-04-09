@@ -8,9 +8,9 @@ from dataclasses import dataclass
 
 @dataclass()
 class S3Params(object):
-    file_name: str = "/Users/lu-wang/Documents/GitHub/recrnn/target/scala-2.11/recRNN-assembly-0.1.jar"
+    file_name: str = "/Users/lu-wang/Documents/GitHub/NeuralEmbedding/target/scala-2.11/neuralembedding_2.11-0.1.jar"
     bucket_name: str = "ecomdatascience-np"
-    key: str = "lu/recrnn0404/recrnnTest.jar"
+    key: str = "lu/neuralEmbedding.jar"
     kms_key: str = "arn:aws:kms:us-east-1:729964090428:key/3a67dc71-c759-48c9-803a-22ac51fee24d"
 
 

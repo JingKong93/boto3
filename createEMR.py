@@ -5,7 +5,7 @@ from dataclasses import dataclass
 
 @dataclass()
 class EMRParams(object):
-    name: str = "recrnn"
+    name: str = "neuralEmbedding"
     emr_version: str = "emr-5.21.0"
     emr_log_url: str = "s3://ecomdatascience-logs-np/emr/"
     aws_ec2_key: str = None
@@ -15,9 +15,9 @@ class EMRParams(object):
     subnet_id: str = "subnet-f0d61bb9"
     spark_submit: str = """
             spark-submit
-            --class SeqRecommenderExp
+            --class NeuralEmbedding
             --conf spark.dynamicAllocation.enabled=false
-            s3://ecomdatascience-np/lu/recrnn0404/recrnnTest.jar
+            s3://ecomdatascience-np/lu/neuralEmbedding.jar
     """
 
 
@@ -52,21 +52,21 @@ cluster_id = connection.run_job_flow(
                 'Market': 'ON_DEMAND',
                 'InstanceRole': 'CORE',
                 'InstanceType': 'm5.2xlarge',
-                'InstanceCount': 10
+                'InstanceCount': 4
             }
         ],
         'KeepJobFlowAliveWhenNoSteps': False,
         'TerminationProtected': False,
         'Ec2SubnetId': 'subnet-f0d61bb9',
     },
-    BootstrapActions=[
-        {
-            'Name': 'Maximize Spark Default Config',
-            'ScriptBootstrapAction': {
-                'Path': 's3://support.elasticmapreduce/spark/maximize-spark-default-config',
-            }
-        },
-    ],
+    # BootstrapActions=[
+    #     {
+    #         'Name': 'Maximize Spark Default Config',
+    #         'ScriptBootstrapAction': {
+    #             'Path': 's3://support.elasticmapreduce/spark/maximize-spark-default-config',
+    #         }
+    #     },
+    # ],
     Steps=[
         {
             'Name': 'spark',
@@ -88,6 +88,14 @@ cluster_id = connection.run_job_flow(
         {
             'Key': 'owner',
             'Value': 'lu.wang@officedepot.com',
+        },
+        {
+            'Key': 'costcenter',
+            'Value': '47002',
+        },
+        {
+            'Key': 'appname',
+            'Value': 'spark',
         },
     ],
     Configurations=[
