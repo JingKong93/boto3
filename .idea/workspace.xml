@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="364de23f-93b3-4a94-9334-823741d84b91" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/queryDynamo.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/createEMR.py" beforeDir="false" afterPath="$PROJECT_DIR$/createEMR.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploadS3.py" beforeDir="false" afterPath="$PROJECT_DIR$/uploadS3.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/queryDynamo.py" beforeDir="false" afterPath="$PROJECT_DIR$/queryDynamo.py" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -85,8 +82,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/queryDynamo.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+            <state relative-caret-position="345">
+              <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
             </state>
           </provider>
         </entry>
@@ -195,12 +192,12 @@
       <workItem from="1554299862894" duration="5092000" />
       <workItem from="1554386942312" duration="6311000" />
       <workItem from="1554691072571" duration="470000" />
-      <workItem from="1554750706604" duration="386000" />
+      <workItem from="1554750706604" duration="599000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="14228000" />
+    <option name="totallyTimeSpent" value="14441000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
@@ -308,8 +305,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/queryDynamo.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+        <state relative-caret-position="345">
+          <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
         </state>
       </provider>
     </entry>

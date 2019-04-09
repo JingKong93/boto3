@@ -1,14 +1,15 @@
 import boto3
 
-dynamodb = boto3.resource('dynamodb')
+dynamoDB = boto3.resource('dynamodb')
 
-table = dynamodb.Table('agent-purchase')
+table = dynamoDB.Table('agent-purchase')
+
 
 def get_table_metadata(table_name):
     """
     Get some metadata about chosen table.
     """
-    table = dynamodb.Table(table_name)
+    table = dynamoDB.Table(table_name)
 
     return {
         'num_items': table.item_count,
@@ -17,5 +18,6 @@ def get_table_metadata(table_name):
         'bytes_size': table.table_size_bytes,
         'global_secondary_indices': table.global_secondary_indexes
     }
+
 
 get_table_metadata("agent-purchase")
