@@ -8,9 +8,16 @@ from dataclasses import dataclass
 
 @dataclass()
 class S3Params(object):
-    file_name: str = "/Users/lu-wang/Documents/GitHub/NeuralEmbedding/target/scala-2.11/neuralembedding_2.11-0.1.jar"
+    # file_name: str = "/Users/jingnicole-kong/Documents/OD/subscription_update/target/scala-2.11/subscription_update-assembly-0.1.jar"
+    file_name: str = "/Users/jingnicole-kong/Documents/OD/bsdsubscription/target/scala-2.11/bsdsubscription-assembly-0.1.jar"
+    # file_name: str = "/Users/jingnicole-kong/Desktop/emailmodel/target/scala-2.11/emailmodel-assembly-0.1.jar"
+    # file_name: str = "/Users/jingnicole-kong/Documents/OD/word2vec/target/scala-2.11/word2vec-assembly-0.1.jar"
+    # file_name: str = "/Users/jingnicole-kong/Downloads/price"
     bucket_name: str = "ecomdatascience-np"
-    key: str = "lu/neuralEmbedding.jar"
+    # key: str = "nicole/Email/traindata0708/emailmodel.jar"
+    # key: str = "Sub/subdata0619/submodel.jar"
+    key: str = "BSDSub/subdata0820/submodel.jar"
+    # key: str = "nicole/bump/traindata0820/bumpmodel.jar"
     kms_key: str = "arn:aws:kms:us-east-1:729964090428:key/3a67dc71-c759-48c9-803a-22ac51fee24d"
 
 

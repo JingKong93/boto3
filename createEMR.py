@@ -5,7 +5,7 @@ from dataclasses import dataclass
 
 @dataclass()
 class EMRParams(object):
-    name: str = "neuralEmbedding"
+    name: str = "bumpsku"
     emr_version: str = "emr-5.21.0"
     emr_log_url: str = "s3://ecomdatascience-logs-np/emr/"
     aws_ec2_key: str = None
@@ -14,10 +14,12 @@ class EMRParams(object):
     region_name: str = "us-east-1"
     subnet_id: str = "subnet-f0d61bb9"
     spark_submit: str = """
-            spark-submit
-            --class NeuralEmbedding
-            --conf spark.dynamicAllocation.enabled=false
-            s3://ecomdatascience-np/lu/neuralEmbedding.jar
+            spark-submit 
+            --class main
+            --conf spark.dynamicAllocation.enabled=false 
+            --conf spark.rpc.message.maxSize=512
+            s3://ecomdatascience-np/BSDSub/subdata0820/submodel.jar
+            
     """
 
 
@@ -44,15 +46,15 @@ cluster_id = connection.run_job_flow(
                 'Name': "Master nodes",
                 'Market': 'ON_DEMAND',
                 'InstanceRole': 'MASTER',
-                'InstanceType': 'm5.xlarge',
+                'InstanceType': 'r5.4xlarge',
                 'InstanceCount': 1,
             },
             {
                 'Name': "Slave nodes",
                 'Market': 'ON_DEMAND',
                 'InstanceRole': 'CORE',
-                'InstanceType': 'm5.2xlarge',
-                'InstanceCount': 4
+                'InstanceType': 'r5.4xlarge',
+                'InstanceCount': 2
             }
         ],
         'KeepJobFlowAliveWhenNoSteps': False,
