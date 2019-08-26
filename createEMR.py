@@ -5,7 +5,7 @@ from dataclasses import dataclass
 
 @dataclass()
 class EMRParams(object):
-    name: str = "bumpsku"
+    name: str = "bsdsub"
     emr_version: str = "emr-5.21.0"
     emr_log_url: str = "s3://ecomdatascience-logs-np/emr/"
     aws_ec2_key: str = None
